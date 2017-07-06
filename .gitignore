@@ -30,7 +30,7 @@ sysinfo.txt
 *.unitypackage
 
 # Assets
-AssetsAssetsStore/*
+/Assets/AssetsStore/*
 
 # =========================
 # Operating System Files
