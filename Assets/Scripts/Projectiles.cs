@@ -14,7 +14,6 @@ public class Projectiles : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(Timer);
         Timer -= Time.deltaTime;
         if ((int)Timer <= 0)
         {
