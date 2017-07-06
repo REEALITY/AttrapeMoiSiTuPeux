@@ -6,16 +6,12 @@ public class Projectiles : MonoBehaviour {
 
     //Drag in the Bullet Emitter from the Component Inspector.
     public GameObject Bullet_Emitter;
-
     //Drag in the Bullet Prefab from the Component Inspector.
     public GameObject Bullet;
-
     //Enter the Speed of the Bullet from the Component Inspector.
     public float Bullet_Forward_Force;
+    public float Timer = 10.0f;
 
-    private float Timer = 10.0f;
-
-    // Update is called once per frame
     void Update()
     {
         Debug.Log(Timer);
