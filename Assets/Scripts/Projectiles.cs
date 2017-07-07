@@ -11,9 +11,17 @@ public class Projectiles : MonoBehaviour {
     public GameObject Bomb;
     //Enter the Speed of the Bullet from the Component Inspector.
     public float Bullet_Forward_Force;
-    public float Timer = 10.0f;
+    public float TimerMax;
 
+    private float Timer;
     private int myRandomBall;
+    private ParticleSystem fire;
+
+    private void Start()
+    {
+        fire = GetComponent<ParticleSystem>();
+    }
+
 
     void Update()
     {
@@ -28,6 +36,7 @@ public class Projectiles : MonoBehaviour {
                     Debug.Log("Balls");
                     //The Bullet instantiation happens here.
                     GameObject Temporary_Bullet_Handler;
+                    fire.Play(true);
                     Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
                     //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.
@@ -48,6 +57,7 @@ public class Projectiles : MonoBehaviour {
                     Debug.Log("Bomb");
                     //The Bullet instantiation happens here.
                     GameObject Temporary_Bullet_Handler2;
+                    fire.Play(true);
                     Temporary_Bullet_Handler2 = Instantiate(Bomb, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
                     //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.
@@ -66,9 +76,8 @@ public class Projectiles : MonoBehaviour {
                     break;
                 default:
                     break;
-            }
-           
-            Timer = 10.0f;
+            }      
+            Timer = TimerMax;
         }
     }
 }
