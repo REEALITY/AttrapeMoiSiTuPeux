@@ -21,7 +21,19 @@ public class CatchBalls : MonoBehaviour {
             score.text = "Score : " + point;
             Debug.Log("Filet activated");
         }
+        else if (Balls.gameObject.tag == "Calice")
+        {
+            point += 10;
+            score.text = "Score : " + point;
+            Debug.Log("Filet activated");
+        }
         else if (Balls.gameObject.tag == "Bombe")
+        {
+            point -= 5;
+            score.text = "Score : " + point;
+            Debug.Log("Filet activated");
+        }
+        else if (Balls.gameObject.tag == "Crane")
         {
             point -= 10;
             score.text = "Score : " + point;
