@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour {
 
     void StartGame()
     {
-        string data = "Temps restant : ";
+        string data = "";
 
         timer.text = data + (int)tgame;
         tgame -= Time.deltaTime;

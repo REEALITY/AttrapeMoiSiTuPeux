@@ -10,7 +10,7 @@ public class CatchBalls : MonoBehaviour {
 
     private void Start()
     {
-        score.text = "Score : " + point;
+        score.text = "" + point;
     }
 
     void OnTriggerEnter(Collider Balls)
@@ -18,25 +18,25 @@ public class CatchBalls : MonoBehaviour {
         if (Balls.gameObject.tag == "Balls")
         {
             point += 5;
-            score.text = "Score : " + point;
+            score.text = "" + point;
             Debug.Log("Filet activated");
         }
         else if (Balls.gameObject.tag == "Calice")
         {
             point += 10;
-            score.text = "Score : " + point;
+            score.text = "" + point;
             Debug.Log("Filet activated");
         }
         else if (Balls.gameObject.tag == "Bombe")
         {
             point -= 5;
-            score.text = "Score : " + point;
+            score.text = "" + point;
             Debug.Log("Filet activated");
         }
         else if (Balls.gameObject.tag == "Crane")
         {
             point -= 10;
-            score.text = "Score : " + point;
+            score.text = "" + point;
             Debug.Log("Filet activated");
         }
     }
