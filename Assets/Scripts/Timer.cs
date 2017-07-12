@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour {
 
     public Text timer;
-
-    private float t = 60.0f;
+    public float tgame = 60.0f;
 
     private enum States
     {
@@ -31,9 +30,9 @@ public class Timer : MonoBehaviour {
     {
         string data = "Temps restant : ";
 
-        timer.text = data + (int)t;
-        t -= Time.deltaTime;
-        if ((int)t == 0)
+        timer.text = data + (int)tgame;
+        tgame -= Time.deltaTime;
+        if ((int)tgame == 0)
             myState = States.timerOff;
     }
 
