@@ -22,6 +22,7 @@ public class Projectiles : MonoBehaviour {
     private int myRandomBall;
     private ParticleSystem fire;
     private AudioSource FireSFX;
+    private float TProjectile = 6.0f;
 
     private void Start()
     {
@@ -40,11 +41,9 @@ public class Projectiles : MonoBehaviour {
             {
                 TimerMax = Random.Range(3, 10);
                 myRandomBall = Random.Range(0, 5);
-                Debug.Log(myRandomBall);
                 switch (myRandomBall)
                 {
                     case 4:
-                        Debug.Log("Balls");
                         //The Bullet instantiation happens here.
                         GameObject Temporary_Bullet_Handler5;
                         fire.Play(true);
@@ -64,10 +63,9 @@ public class Projectiles : MonoBehaviour {
                         Temporary_RigidBody5.AddForce(transform.forward * Bullet_Forward_Force);
 
                         //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
-                        Destroy(Temporary_Bullet_Handler5, 10.0f);
+                        Destroy(Temporary_Bullet_Handler5, TProjectile);
                         break;
                     case 3:
-                        Debug.Log("Crane");
                         //The Bullet instantiation happens here.
                         GameObject Temporary_Bullet_Handler4;
                         fire.Play(true);
@@ -87,10 +85,9 @@ public class Projectiles : MonoBehaviour {
                         Temporary_RigidBody4.AddForce(transform.forward * Bullet_Forward_Force);
 
                         //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
-                        Destroy(Temporary_Bullet_Handler4, 10.0f);
+                        Destroy(Temporary_Bullet_Handler4, TProjectile);
                         break;
                     case 2:
-                        Debug.Log("Calice");
                         //The Bullet instantiation happens here.
                         GameObject Temporary_Bullet_Handler3;
                         fire.Play(true);
@@ -110,10 +107,9 @@ public class Projectiles : MonoBehaviour {
                         Temporary_RigidBody3.AddForce(transform.forward * Bullet_Forward_Force);
 
                         //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
-                        Destroy(Temporary_Bullet_Handler3, 10.0f);
+                        Destroy(Temporary_Bullet_Handler3, TProjectile);
                         break;
                     case 1:
-                        Debug.Log("Balls");
                         //The Bullet instantiation happens here.
                         GameObject Temporary_Bullet_Handler;
                         fire.Play(true);
@@ -133,10 +129,9 @@ public class Projectiles : MonoBehaviour {
                         Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
 
                         //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
-                        Destroy(Temporary_Bullet_Handler, 10.0f);
+                        Destroy(Temporary_Bullet_Handler, TProjectile);
                         break;
                     case 0:
-                        Debug.Log("Bomb");
                         //The Bullet instantiation happens here.
                         GameObject Temporary_Bullet_Handler2;
                         fire.Play(true);
@@ -156,7 +151,7 @@ public class Projectiles : MonoBehaviour {
                         Temporary_RigidBody2.AddForce(transform.forward * Bullet_Forward_Force);
 
                         //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
-                        Destroy(Temporary_Bullet_Handler2, 10.0f);
+                        Destroy(Temporary_Bullet_Handler2, TProjectile);
                         break;
                     default:
                         break;

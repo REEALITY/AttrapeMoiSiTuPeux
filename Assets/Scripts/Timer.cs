@@ -21,7 +21,6 @@ public class Timer : MonoBehaviour {
 
     private void Update()
     {
-        Debug.Log(myState);
         if (myState == States.timerOn) { StartGame(); }
         else if (myState == States.timerOff) { endGame(); }
     }

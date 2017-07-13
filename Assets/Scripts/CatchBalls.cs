@@ -7,6 +7,7 @@ public class CatchBalls : MonoBehaviour {
 
     public Text score;
     public GameObject Player;
+    public ParticleSystem disapear;
 
     private int point = 0;
 
@@ -29,25 +30,25 @@ public class CatchBalls : MonoBehaviour {
         {
             point += 5;
             score.text = "" + point;
-            Debug.Log("Filet activated");
+            disapear.Play(true);
         }
         else if (Balls.gameObject.tag == "Calice")
         {
             point += 10;
             score.text = "" + point;
-            Debug.Log("Filet activated");
+            disapear.Play(true);
         }
         else if (Balls.gameObject.tag == "Bombe")
         {
             point -= 5;
             score.text = "" + point;
-            Debug.Log("Filet activated");
+            disapear.Play(true);
         }
         else if (Balls.gameObject.tag == "Crane")
         {
             point -= 10;
             score.text = "" + point;
-            Debug.Log("Filet activated");
+            disapear.Play(true);
         }
     }
 }
