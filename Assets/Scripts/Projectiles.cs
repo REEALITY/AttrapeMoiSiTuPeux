@@ -14,18 +14,21 @@ public class Projectiles : MonoBehaviour {
     //Enter the Speed of the Bullet from the Component Inspector.
     public float Bullet_Forward_Force;
     public bool CanIShoot;
-    
+    public ParticleSystem explosion;
+    public AudioClip Boom;
+
     private float TimerMax;
     private float Timer;
     private int myRandomBall;
     private ParticleSystem fire;
+    private AudioSource FireSFX;
 
     private void Start()
     {
         fire = GetComponent<ParticleSystem>();
         TimerMax = Random.Range(3, 10);
         CanIShoot = true;
-        
+        FireSFX = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -45,6 +48,8 @@ public class Projectiles : MonoBehaviour {
                         //The Bullet instantiation happens here.
                         GameObject Temporary_Bullet_Handler5;
                         fire.Play(true);
+                        explosion.Play(true);
+                        FireSFX.PlayOneShot(Boom);
                         Temporary_Bullet_Handler5 = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
                         //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.
@@ -66,6 +71,8 @@ public class Projectiles : MonoBehaviour {
                         //The Bullet instantiation happens here.
                         GameObject Temporary_Bullet_Handler4;
                         fire.Play(true);
+                        explosion.Play(true);
+                        FireSFX.PlayOneShot(Boom);
                         Temporary_Bullet_Handler4 = Instantiate(Crane, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
                         //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.
@@ -87,6 +94,8 @@ public class Projectiles : MonoBehaviour {
                         //The Bullet instantiation happens here.
                         GameObject Temporary_Bullet_Handler3;
                         fire.Play(true);
+                        explosion.Play(true);
+                        FireSFX.PlayOneShot(Boom);
                         Temporary_Bullet_Handler3 = Instantiate(Calice, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
                         //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.
@@ -108,6 +117,8 @@ public class Projectiles : MonoBehaviour {
                         //The Bullet instantiation happens here.
                         GameObject Temporary_Bullet_Handler;
                         fire.Play(true);
+                        explosion.Play(true);
+                        FireSFX.PlayOneShot(Boom);
                         Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
                         //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.
@@ -129,6 +140,8 @@ public class Projectiles : MonoBehaviour {
                         //The Bullet instantiation happens here.
                         GameObject Temporary_Bullet_Handler2;
                         fire.Play(true);
+                        explosion.Play(true);
+                        FireSFX.PlayOneShot(Boom);
                         Temporary_Bullet_Handler2 = Instantiate(Bomb, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
                         //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.

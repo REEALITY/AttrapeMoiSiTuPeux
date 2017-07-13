@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class CatchBalls : MonoBehaviour {
 
     public Text score;
+    public GameObject Player;
+
     private int point = 0;
 
     private void Start()
@@ -13,7 +15,15 @@ public class CatchBalls : MonoBehaviour {
         score.text = "" + point;
     }
 
-    void OnTriggerEnter(Collider Balls)
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Physics.IgnoreCollision(GetComponentInParent<Collider>(), GetComponent<Collider>());
+        }
+    }
+
+        void OnTriggerEnter(Collider Balls)
     {
         if (Balls.gameObject.tag == "Balls")
         {
