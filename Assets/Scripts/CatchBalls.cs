@@ -8,14 +8,16 @@ public class CatchBalls : MonoBehaviour {
     public Text score;
     public GameObject Player;
     public ParticleSystem disapear;
+    public AudioClip bad;
+    public AudioClip good;
 
     private int point = 0;
-    private AudioSource ringSfx;
+    private AudioSource sound;
 
     private void Start()
     {
         score.text = "" + point;
-        ringSfx = GetComponent<AudioSource>(); 
+        sound = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -33,7 +35,8 @@ public class CatchBalls : MonoBehaviour {
             point += 5;
             score.text = "" + point;
             disapear.Play(true);
-            ringSfx.Play();
+            sound.clip = good;
+            sound.Play();
             Destroy(Balls.gameObject);
         }
         else if (Balls.gameObject.tag == "Calice")
@@ -41,7 +44,7 @@ public class CatchBalls : MonoBehaviour {
             point += 10;
             score.text = "" + point;
             disapear.Play(true);
-            ringSfx.Play();
+            sound.Play();
             Destroy(Balls.gameObject);
         }
         else if (Balls.gameObject.tag == "Bombe")
@@ -49,6 +52,8 @@ public class CatchBalls : MonoBehaviour {
             point -= 5;
             score.text = "" + point;
             disapear.Play(true);
+            sound.clip = bad;
+            sound.Play();
             Destroy(Balls.gameObject);
         }
         else if (Balls.gameObject.tag == "Crane")
@@ -56,6 +61,8 @@ public class CatchBalls : MonoBehaviour {
             point -= 10;
             score.text = "" + point;
             disapear.Play(true);
+            sound.clip = bad;
+            sound.Play();
             Destroy(Balls.gameObject);
         }
     }
