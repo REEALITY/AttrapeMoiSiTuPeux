@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rotate : MonoBehaviour {
+public class RotateBomb : MonoBehaviour {
 
-    public float speed;
+    private float speed;
 
-	void Update () {
+    private void Start()
+    {
+        speed = Random.Range(100, 300);
+    }
+
+    private void Update () {
         transform.Rotate(speed * Time.deltaTime, speed * Time.deltaTime, speed * Time.deltaTime);
     }
 }
