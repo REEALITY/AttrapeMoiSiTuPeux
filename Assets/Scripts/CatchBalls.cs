@@ -10,10 +10,12 @@ public class CatchBalls : MonoBehaviour {
     public ParticleSystem disapear;
 
     private int point = 0;
+    private AudioSource ringSfx;
 
     private void Start()
     {
         score.text = "" + point;
+        ringSfx = GetComponent<AudioSource>(); 
     }
 
     void OnCollisionEnter(Collision collision)
@@ -31,12 +33,14 @@ public class CatchBalls : MonoBehaviour {
             point += 5;
             score.text = "" + point;
             disapear.Play(true);
+            ringSfx.Play();
         }
         else if (Balls.gameObject.tag == "Calice")
         {
             point += 10;
             score.text = "" + point;
             disapear.Play(true);
+            ringSfx.Play();
         }
         else if (Balls.gameObject.tag == "Bombe")
         {
