@@ -20,20 +20,21 @@ public class CatchBalls : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Filet")
         {
             Physics.IgnoreCollision(GetComponentInParent<Collider>(), GetComponent<Collider>());
         }
     }
 
-        void OnTriggerEnter(Collider Balls)
-    {
+     void OnTriggerEnter(Collider Balls)
+     {
         if (Balls.gameObject.tag == "Balls")
         {
             point += 5;
             score.text = "" + point;
             disapear.Play(true);
             ringSfx.Play();
+            Destroy(Balls.gameObject);
         }
         else if (Balls.gameObject.tag == "Calice")
         {
@@ -41,18 +42,21 @@ public class CatchBalls : MonoBehaviour {
             score.text = "" + point;
             disapear.Play(true);
             ringSfx.Play();
+            Destroy(Balls.gameObject);
         }
         else if (Balls.gameObject.tag == "Bombe")
         {
             point -= 5;
             score.text = "" + point;
             disapear.Play(true);
+            Destroy(Balls.gameObject);
         }
         else if (Balls.gameObject.tag == "Crane")
         {
             point -= 10;
             score.text = "" + point;
             disapear.Play(true);
+            Destroy(Balls.gameObject);
         }
     }
 }
