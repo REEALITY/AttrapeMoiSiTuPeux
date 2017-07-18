@@ -7,6 +7,15 @@ public class Timer : MonoBehaviour {
 
     public Text timer;
     public float tgame = 60.0f;
+    public GameObject test;
+    public Text[] Pseudo;
+    public Text[] Grade;
+    public Text[] Points;
+
+    private Menu Menu;
+    private CatchBalls CatchBalls;
+    private string Pseudonyme;
+    private int MyNewPoints;
 
     private enum States
     {
@@ -17,12 +26,13 @@ public class Timer : MonoBehaviour {
     private void Start()
     {
         myState = States.timerOn;
+        Pseudonyme = Menu.Pseudo;
     }
 
     private void Update()
     {
         if (myState == States.timerOn) { StartGame(); }
-        else if (myState == States.timerOff) { endGame(); }
+        else if (myState == States.timerOff) { EndGame(); }
     }
 
     void StartGame()
@@ -35,8 +45,10 @@ public class Timer : MonoBehaviour {
             myState = States.timerOff;
     }
 
-    void endGame()
+    public void EndGame()
     {
-        Debug.Log("End Game");
+        MyNewPoints = CatchBalls.point;
+        test.SetActive(true);
+        Debug.Log(Pseudonyme);
     }
 }
