@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour {
     private string Pseudonyme;
     private int MyNewPoints;
     private int[] ScorePoints = new int[10];
+    private Projectiles Projectiles;
 
     private enum States
     {
@@ -50,6 +51,7 @@ public class Timer : MonoBehaviour {
     {
         string data = "";
 
+        myState = States.timerOn;
         timer.text = data + (int)tgame;
         tgame -= Time.deltaTime;
         if ((int)tgame == 0)
@@ -166,5 +168,11 @@ public class Timer : MonoBehaviour {
         ScorePoints[9] = MyNewPoints;
         Pseudo[9].text = Pseudonyme;
         Points[9].text = "" + ScorePoints[9];
+    }
+
+    public void Reload()
+    {
+        tgame = 60.0f;
+        StartGame();
     }
 }
