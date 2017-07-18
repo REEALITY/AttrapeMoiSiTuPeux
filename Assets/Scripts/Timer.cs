@@ -49,6 +49,7 @@ public class Timer : MonoBehaviour {
     {
         MyNewPoints = CatchBalls.point;
         test.SetActive(true);
-        Debug.Log(Pseudonyme);
+        Pseudo[0].text = Pseudonyme;
+        Points[0].text = "" + MyNewPoints;
     }
 }

@@ -10,7 +10,7 @@ public class CatchBalls : MonoBehaviour {
     public ParticleSystem disapear;
     public AudioClip bad;
     public AudioClip good;
-    public int point = 0;
+    static public int point = 0;
 
     private AudioSource sound;
     
