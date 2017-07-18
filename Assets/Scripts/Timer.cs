@@ -67,46 +67,16 @@ public class Timer : MonoBehaviour {
 
     private void MyHighScore()
     {        
-        if (MyNewPoints >= ScorePoints[0])
-        {
-            myState = States.s0;
-        }
-        else if (MyNewPoints >= ScorePoints[1])
-        {
-            myState = States.s1;
-        }
-        else if (MyNewPoints >= ScorePoints[2])
-        {
-            myState = States.s2;
-        }
-        else if (MyNewPoints >= ScorePoints[3])
-        {
-            myState = States.s3;
-        }
-        else if (MyNewPoints >= ScorePoints[4])
-        {
-            myState = States.s4;
-        }
-        else if (MyNewPoints >= ScorePoints[5])
-        {
-            myState = States.s5;
-        }
-        else if (MyNewPoints >= ScorePoints[6])
-        {
-            myState = States.s6;
-        }
-        else if (MyNewPoints >= ScorePoints[7])
-        {
-            myState = States.s7;
-        }
-        else if (MyNewPoints >= ScorePoints[8])
-        {
-            myState = States.s8;
-        }
-        else if (MyNewPoints >= ScorePoints[9])
-        {
-            myState = States.s9;
-        }
+        if (MyNewPoints >= ScorePoints[0]) { myState = States.s0; }
+        else if (MyNewPoints >= ScorePoints[1]) { myState = States.s1; }
+        else if (MyNewPoints >= ScorePoints[2]) { myState = States.s2; }
+        else if (MyNewPoints >= ScorePoints[3]) { myState = States.s3; }
+        else if (MyNewPoints >= ScorePoints[4]) { myState = States.s4; }
+        else if (MyNewPoints >= ScorePoints[5]) { myState = States.s5; }
+        else if (MyNewPoints >= ScorePoints[6]) { myState = States.s6; }
+        else if (MyNewPoints >= ScorePoints[7]) { myState = States.s7; }
+        else if (MyNewPoints >= ScorePoints[8]) { myState = States.s8; }
+        else if (MyNewPoints >= ScorePoints[9]) { myState = States.s9; }
     }
 
     private void HighScore0()
