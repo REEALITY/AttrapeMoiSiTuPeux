@@ -175,7 +175,203 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pCube1
+        weight: 1
+      - path: pCube2
+        weight: 1
+      - path: pCube2/polySurface2
+        weight: 1
+      - path: pCube2/polySurface2/transform2
+        weight: 1
+      - path: pCube2/polySurface3 1
+        weight: 1
+      - path: pCube2/polySurface3 1/transform3
+        weight: 1
+      - path: pCube2/transform1
+        weight: 1
+      - path: pCube3
+        weight: 1
+      - path: polySurface3
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/body
+        weight: 1
+      - path: root/body/clavicule
+        weight: 1
+      - path: root/body/clavicule/neck
+        weight: 1
+      - path: root/body/clavicule/neck/head
+        weight: 1
+      - path: root/body/clavicule/shoulder_left
+        weight: 1
+      - path: root/body/clavicule/shoulder_left/wing_left
+        weight: 1
+      - path: root/body/clavicule/shoulder_left/wing_left/wrist_left
+        weight: 1
+      - path: root/body/clavicule/shoulder_left/wing_left/wrist_left/end_wing_left
+        weight: 1
+      - path: root/body/clavicule/shoulder_right
+        weight: 1
+      - path: root/body/clavicule/shoulder_right/wing_right
+        weight: 1
+      - path: root/body/clavicule/shoulder_right/wing_right/wrist_right
+        weight: 1
+      - path: root/body/clavicule/shoulder_right/wing_right/wrist_right/end_wing_right
+        weight: 1
+      - path: root/leg_left
+        weight: 1
+      - path: root/leg_left/foot_left
+        weight: 1
+      - path: root/leg_left/foot_left/foot2_left
+        weight: 1
+      - path: root/leg_left/foot_left/foot2_left/foot_end_left
+        weight: 1
+      - path: root/leg_right
+        weight: 1
+      - path: root/leg_right/foot_right
+        weight: 1
+      - path: root/leg_right/foot_right/foot2_right
+        weight: 1
+      - path: root/leg_right/foot_right/foot2_right/foot_end_right
+        weight: 1
+      - path: root/tail
+        weight: 1
+      - path: root/tail/tail_middle
+        weight: 1
+      - path: root/tail/tail_middle/tail_end
+        weight: 1
+      - path: root_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/neck_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/neck_ctrl/neck_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_left_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_left_ctrl/shoulder_left_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_left_ctrl/shoulder_left_ctrl 1/wing_left_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_left_ctrl/shoulder_left_ctrl 1/wing_left_ctrl/wing_left_ctrl
+          1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_left_ctrl/shoulder_left_ctrl 1/wing_left_ctrl/wing_left_ctrl
+          1/wrist_left_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_left_ctrl/shoulder_left_ctrl 1/wing_left_ctrl/wing_left_ctrl
+          1/wrist_left_ctrl/wrist_left_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_right_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_right_ctrl/shoulder_right_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_right_ctrl/shoulder_right_ctrl 1/wing_right_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_right_ctrl/shoulder_right_ctrl 1/wing_right_ctrl/wing_right_ctrl
+          1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_right_ctrl/shoulder_right_ctrl 1/wing_right_ctrl/wing_right_ctrl
+          1/wrist_right_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/body_ctrl/body_ctrl 1/clavicule_ctrl/clavicule_ctrl
+          1/shoulder_right_ctrl/shoulder_right_ctrl 1/wing_right_ctrl/wing_right_ctrl
+          1/wrist_right_ctrl/wrist_right_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_left_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_left_ctrl/leg_left_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_left_ctrl/leg_left_ctrl 1/foot_left_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_left_ctrl/leg_left_ctrl 1/foot_left_ctrl/foot_left_ctrl
+          1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_left_ctrl/leg_left_ctrl 1/foot_left_ctrl/foot_left_ctrl
+          1/foot2_left_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_left_ctrl/leg_left_ctrl 1/foot_left_ctrl/foot_left_ctrl
+          1/foot2_left_ctrl/foot2_left_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_right_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_right_ctrl/leg_right_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_right_ctrl/leg_right_ctrl 1/foot_right_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_right_ctrl/leg_right_ctrl 1/foot_right_ctrl/foot_right_ctrl
+          1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_right_ctrl/leg_right_ctrl 1/foot_right_ctrl/foot_right_ctrl
+          1/foot2_right_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/leg_right_ctrl/leg_right_ctrl 1/foot_right_ctrl/foot_right_ctrl
+          1/foot2_right_ctrl/foot2_right_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/tail_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/tail_ctrl/tail_ctrl 1
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/tail_ctrl/tail_ctrl 1/tail_middle_ctrl
+        weight: 1
+      - path: root_ctrl/root_ctrl 1/tail_ctrl/tail_ctrl 1/tail_middle_ctrl/tail_middle_ctrl
+          1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
