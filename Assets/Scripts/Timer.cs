@@ -8,20 +8,21 @@ public class Timer : MonoBehaviour {
     public Text timer;
     public float tgame = 60.0f;
     public GameObject CanvasHighScore;
+    public GameObject CanvasTimer;
     public Text[] Pseudo;
     public Text[] Grade;
     public Text[] Points;
+    public int[] ScorePoints;
 
     private Menu Menu;
     private CatchBalls CatchBalls;
     private string Pseudonyme;
     private int MyNewPoints;
-    private int[] ScorePoints = new int[10];
     private Projectiles Projectiles;
 
     private enum States
     {
-        timerOn, timerOff, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9
+        timerOn, timerOff, s0, s1, s2, s3, s4, s5, s6
     };
     private States myState;
 
@@ -29,6 +30,14 @@ public class Timer : MonoBehaviour {
     {
         myState = States.timerOn;
         Pseudonyme = Menu.Pseudo;
+        Points[0].text = "" + ScorePoints[0];
+        Points[1].text = "" + ScorePoints[1];
+        Points[2].text = "" + ScorePoints[2];
+        Points[3].text = "" + ScorePoints[3];
+        Points[4].text = "" + ScorePoints[4];
+        Points[5].text = "" + ScorePoints[5];
+        Points[6].text = "" + ScorePoints[6];
+
     }
 
     private void Update()
@@ -42,9 +51,6 @@ public class Timer : MonoBehaviour {
         else if (myState == States.s4) { HighScore4(); }
         else if (myState == States.s5) { HighScore5(); }
         else if (myState == States.s6) { HighScore6(); }
-        else if (myState == States.s7) { HighScore7(); }
-        else if (myState == States.s8) { HighScore8(); }
-        else if (myState == States.s9) { HighScore9(); }
     }
 
     void StartGame()
@@ -62,6 +68,7 @@ public class Timer : MonoBehaviour {
     {
         MyNewPoints = CatchBalls.point;
         CanvasHighScore.SetActive(true);
+        CanvasTimer.SetActive(false);
         MyHighScore();
     }
 
@@ -74,9 +81,6 @@ public class Timer : MonoBehaviour {
         else if (MyNewPoints >= ScorePoints[4]) { myState = States.s4; }
         else if (MyNewPoints >= ScorePoints[5]) { myState = States.s5; }
         else if (MyNewPoints >= ScorePoints[6]) { myState = States.s6; }
-        else if (MyNewPoints >= ScorePoints[7]) { myState = States.s7; }
-        else if (MyNewPoints >= ScorePoints[8]) { myState = States.s8; }
-        else if (MyNewPoints >= ScorePoints[9]) { myState = States.s9; }
     }
 
     private void HighScore0()
@@ -120,24 +124,6 @@ public class Timer : MonoBehaviour {
         ScorePoints[6] = MyNewPoints;
         Pseudo[6].text = Pseudonyme;
         Points[6].text = "" + ScorePoints[6];
-    }
-    private void HighScore7()
-    {
-        ScorePoints[7] = MyNewPoints;
-        Pseudo[7].text = Pseudonyme;
-        Points[7].text = "" + ScorePoints[7];
-    }
-    private void HighScore8()
-    {
-        ScorePoints[8] = MyNewPoints;
-        Pseudo[8].text = Pseudonyme;
-        Points[8].text = "" + ScorePoints[8];
-    }
-    private void HighScore9()
-    {
-        ScorePoints[9] = MyNewPoints;
-        Pseudo[9].text = Pseudonyme;
-        Points[9].text = "" + ScorePoints[9];
     }
 
     public void Reload()
