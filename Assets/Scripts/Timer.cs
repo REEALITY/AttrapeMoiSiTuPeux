@@ -80,7 +80,7 @@ public class Timer : MonoBehaviour {
         else if (MyNewPoints >= ScorePoints[3]) { myState = States.s3; }
         else if (MyNewPoints >= ScorePoints[4]) { myState = States.s4; }
         else if (MyNewPoints >= ScorePoints[5]) { myState = States.s5; }
-        else if (MyNewPoints >= ScorePoints[6]) { myState = States.s6; }
+        else if (MyNewPoints <= ScorePoints[6] || MyNewPoints >= ScorePoints[6]) { myState = States.s6; }
     }
 
     private void HighScore0()
