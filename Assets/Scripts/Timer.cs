@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour {
     public Text[] Grade;
     public Text[] Points;
     public int[] ScorePoints;
+    public AudioSource[] VoiceSource;
 
     private Menu Menu;
     private CatchBalls CatchBalls;
@@ -51,6 +52,18 @@ public class Timer : MonoBehaviour {
         else if (myState == States.s4) { HighScore4(); }
         else if (myState == States.s5) { HighScore5(); }
         else if (myState == States.s6) { HighScore6(); }
+    }
+
+    private void SetVoicePause()
+    {
+        VoiceSource[0].gameObject.SetActive(false);
+        VoiceSource[1].gameObject.SetActive(false);
+        VoiceSource[2].gameObject.SetActive(false);
+        VoiceSource[3].gameObject.SetActive(false);
+        VoiceSource[4].gameObject.SetActive(false);
+        VoiceSource[5].gameObject.SetActive(false);
+        VoiceSource[6].gameObject.SetActive(false);
+        VoiceSource[7].gameObject.SetActive(false);
     }
 
     void StartGame()

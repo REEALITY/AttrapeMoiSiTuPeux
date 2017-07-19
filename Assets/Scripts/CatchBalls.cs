@@ -56,14 +56,5 @@ public class CatchBalls : MonoBehaviour {
             sound.Play();
             Destroy(Balls.gameObject);
         }
-        else if (Balls.gameObject.tag == "Crane")
-        {
-            point -= 10;
-            score.text = "" + point;
-            disapear.Play(true);
-            sound.clip = bad;
-            sound.Play();
-            Destroy(Balls.gameObject);
-        }
     }
 }
