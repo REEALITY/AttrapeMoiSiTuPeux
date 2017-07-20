@@ -9,12 +9,6 @@ public class saveconfig : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         dataPath = Application.dataPath;
-        dataPath = dataPath.Replace("Assets", "");
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        dataPath = dataPath.Replace("Assets", "");	
 	}
 }

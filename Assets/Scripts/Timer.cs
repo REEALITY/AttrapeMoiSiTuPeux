@@ -161,10 +161,4 @@ public class Timer : MonoBehaviour {
         Pseudo[9].text = Pseudonyme;
         Points[9].text = "" + ScorePoints[9];
     }
-
-    public void Reload()
-    {
-        tgame = 60.0f;
-        StartGame();
-    }
 }

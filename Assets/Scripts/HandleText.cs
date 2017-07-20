@@ -5,32 +5,40 @@ using UnityEngine.UI;
 using System.IO;
 using System.Xml;
 
-public class HandleText : MonoBehaviour
-{
-    public TextAsset pseudo;
-    public Text uiPseudo;
+public class HandleText : MonoBehaviour {
 
-    private void Start()
+    private Menu menu;
+
+    void Load()
     {
-        string data = pseudo.text;
-        string path = "//BombPirates/pseudo";
+        XmlDocument Xmldoc = new XmlDocument();
+        string filepath = menu.sc.dataPath + "highscore.xml";
 
-        ParseXmlFile_first(data, path);
-    }
-
-    void ParseXmlFile_first(string xmlData, string path)
-    {
-        string totVal = "";
-
-        XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(new StringReader(xmlData));
-
-        XmlNodeList myNodeList = xmlDoc.SelectNodes(path);
-        foreach (XmlNode node in myNodeList)
+        if (File.Exists(filepath))
         {
-            XmlNode pseudo = node.FirstChild;
-            totVal = pseudo.InnerXml + "\n\n";
-            uiPseudo.text = totVal;
+            Xmldoc.Load(filepath);
+
+            XmlNodeList listscore = Xmldoc.GetElementsByTagName("player");
+
+            foreach (XmlNode info in listscore)
+            {
+                XmlNodeList content = info.ChildNodes;
+                foreach (XmlNode Item in content)
+                {
+                    if (Item.Name == "name")
+                    {
+                        Debug.Log("player : " + Item.InnerText);
+                    }
+                    if (Item.Name == "timerace")
+                    {
+                        Debug.Log("time : " + Item.InnerText);
+                    }
+                    if (Item.Name == "timerun")
+                    {
+                        Debug.Log("timerun : " + Item.InnerText);
+                    }
+                }
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ using System;
 
 public class Menu : MonoBehaviour {
 
-    saveconfig sc;
+    public saveconfig sc;
 
     public InputField WritePseudo;
     public Text msgWelcome;

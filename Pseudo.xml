@@ -1,3 +1,9 @@
 <!--?xml version="1.0" encoding="utf-8" ?-->
-<highscore>
-</highscore>
+<BombPirates>
+  <player>
+    <name>test</name>
+  </player>
+  <player>
+    <name>QSDFGH</name>
+  </player>
+</BombPirates>
