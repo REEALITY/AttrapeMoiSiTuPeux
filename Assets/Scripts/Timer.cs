@@ -13,7 +13,8 @@ public class Timer : MonoBehaviour {
     public Text[] Grade;
     public Text[] Points;
     public int[] ScorePoints;
-    public AudioSource[] VoiceSource;
+    public AudioSource[] Audio;
+    public AudioClip[] VoiceSource;
 
     private Menu Menu;
     private CatchBalls CatchBalls;
@@ -31,7 +32,6 @@ public class Timer : MonoBehaviour {
     {
         myState = States.timerOn;
         Pseudonyme = Menu.Pseudo;
-
     }
 
     private void Update()
@@ -50,18 +50,6 @@ public class Timer : MonoBehaviour {
         else if (myState == States.s9) { HighScore9(); }
     }
 
-    private void SetVoicePause()
-    {
-        VoiceSource[0].gameObject.SetActive(false);
-        VoiceSource[1].gameObject.SetActive(false);
-        VoiceSource[2].gameObject.SetActive(false);
-        VoiceSource[3].gameObject.SetActive(false);
-        VoiceSource[4].gameObject.SetActive(false);
-        VoiceSource[5].gameObject.SetActive(false);
-        VoiceSource[6].gameObject.SetActive(false);
-        VoiceSource[7].gameObject.SetActive(false);
-    }
-
     void StartGame()
     {
         string data = "";
@@ -75,9 +63,27 @@ public class Timer : MonoBehaviour {
 
     public void EndGame()
     {
+        Audio[0].clip = VoiceSource[0];
+        Audio[1].clip = VoiceSource[1];
+        Audio[2].clip = VoiceSource[2];
         MyNewPoints = CatchBalls.point;
         CanvasHighScore.SetActive(true);
         CanvasTimer.SetActive(false);
+        if (MyNewPoints >= 250) {
+            Audio[0].volume = 1;
+            Audio[0].Play();
+            //Audio[0].Stop();
+        }
+        else if (MyNewPoints <= 0) {
+            Audio[1].volume = 1;
+            Audio[1].Play();
+            //Audio[1].Stop();
+        }
+        else {
+            Audio[2].volume = 1;
+            Audio[2].Play();
+           // Audio[2].Stop();
+        }
         MyHighScore();
     }
 
