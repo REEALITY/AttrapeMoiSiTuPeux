@@ -1,20 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO; 
+using UnityEngine.UI;
+using System.IO;
+using System.Xml;
 
 public class HandleText : MonoBehaviour
 {
-    void readTextFile(string file_path)
+    public TextAsset pseudo;
+    public Text uiPseudo;
+
+    private void Start()
     {
-        StreamReader inp_stm = new StreamReader(file_path);
+        string data = pseudo.text;
+        string path = "//BombPirates/pseudo";
 
-        while (!inp_stm.EndOfStream)
+        ParseXmlFile_first(data, path);
+    }
+
+    void ParseXmlFile_first(string xmlData, string path)
+    {
+        string totVal = "";
+
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(new StringReader(xmlData));
+
+        XmlNodeList myNodeList = xmlDoc.SelectNodes(path);
+        foreach (XmlNode node in myNodeList)
         {
-            string inp_ln = inp_stm.ReadLine();
-            // Do Something with the input. 
+            XmlNode pseudo = node.FirstChild;
+            totVal = pseudo.InnerXml + "\n\n";
+            uiPseudo.text = totVal;
         }
-
-        inp_stm.Close();
     }
 }
