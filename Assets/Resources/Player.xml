@@ -1,0 +1,41 @@
+<!--?xml version="1.0" encoding="utf-8" ?-->
+<BombPirates>
+  <player>
+    <name>Antoine</name>
+    <score>50</score>
+  </player>
+  <player>
+    <name>Lucas</name>
+    <score>210</score>
+  </player>
+  <player>
+    <name>Theo</name>
+    <score>65</score>
+  </player>
+  <player>
+    <name>Julien</name>
+    <score>110</score>
+  </player>
+  <player>
+    <name>Nicolas</name>
+    <score>35</score>
+  </player>
+  <player>
+    <name>Marie</name>
+    <score>90</score>
+  </player>
+  <player>
+    <name>Fleur</name>
+    <score>160</score>
+  </player>
+  <player>
+    <name>
+    </name>
+    <score>0</score>
+  </player>
+  <player>
+    <name>
+    </name>
+    <score>0</score>
+  </player>
+</BombPirates>

@@ -44,7 +44,6 @@ public class Timer : MonoBehaviour {
         if (myState == States.timerOn) { StartGame(); }
         else if (myState == States.timerOff) { EndGame(); }
         else if (myState == States.HighScore) { MyHighScore(); }
-        Debug.Log(myState);
     }
 
     void StartGame()
@@ -57,7 +56,7 @@ public class Timer : MonoBehaviour {
         if ((int)tgame == 0)
         {
             MyNewPoints = CatchBalls.point;
-            SavePlayer(Pseudonyme, MyNewPoints);
+            SavePlayer(Pseudonyme, MyNewPoints, sc.dataPath);
         }
     }
 
@@ -176,14 +175,15 @@ public class Timer : MonoBehaviour {
         }
     }
 
-    public void SavePlayer(string PlayerPseudo, int MyScore)
+    public void SavePlayer(string PlayerPseudo, int MyScore, string filepath)
     {
-        string filepath = sc.dataPath + "Player.xml";
-
+        filepath = filepath + "Player.xml";
+        Debug.Log(filepath);
         XmlDocument Xmldoc = new XmlDocument();
 
         if (File.Exists(filepath))
         {
+            //TextAsset textAsset = (TextAsset)Resources.Load(filepath, typeof(TextAsset));
             Xmldoc.Load(filepath);
 
             XmlElement elmroot = Xmldoc.DocumentElement;

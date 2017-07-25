@@ -9,6 +9,7 @@ public class saveconfig : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         dataPath = Application.dataPath;
-        dataPath = dataPath.Replace("Assets", "");	
-	}
+        dataPath = dataPath.Replace("Assets", "Assets/Resources/");
+        Debug.Log(dataPath);
+    }
 }
