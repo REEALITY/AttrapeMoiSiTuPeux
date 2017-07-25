@@ -136,11 +136,11 @@ public class Timer : MonoBehaviour {
             {
                 Grade[i].text = "Corsaire";
             }
-            else if (HandleText.scorepoints[i] > 100)
+            else if (HandleText.scorepoints[i] > 75)
             {
                 Grade[i].text = "Marin";
             }
-            else if (HandleText.scorepoints[i] > 75)
+            else if (HandleText.scorepoints[i] > 60)
             {
                 Grade[i].text = "Navigateur";
             }
@@ -148,7 +148,7 @@ public class Timer : MonoBehaviour {
             {
                 Grade[i].text = "Second maître";
             }
-            else if (HandleText.scorepoints[i] > 25)
+            else if (HandleText.scorepoints[i] > 40)
             {
                 Grade[i].text = "Cannonier";
             }
