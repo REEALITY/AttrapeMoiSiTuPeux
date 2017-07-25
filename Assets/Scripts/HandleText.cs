@@ -7,21 +7,28 @@ using System.Xml;
 
 public class HandleText : MonoBehaviour {
 
-    static public int[] scorepoints = new int[11] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-    static public string[] pseudoboard = new string[10] { "", "", "", "", "", "", "", "", "", "" };
+    static public int[] scorepoints = new int[50] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,};
+    static public string[] pseudoboard = new string[50] { "", "", "", "", "", "", "", "", "", "",
+                                                          "", "", "", "", "", "", "", "", "", "",
+                                                          "", "", "", "", "", "", "", "", "", "",
+                                                          "", "", "", "", "", "", "", "", "", "",
+                                                          "", "", "", "", "", "", "", "", "", "",};
     static public saveconfig sc;
-    static private int i = 0;
-    static private int i2 = 0;
+    static public int i = 0;
 
     public void Start()
     {
         sc = GetComponent<saveconfig>();
     }
 
-    static public void LoadPseudo()
+    static public void LoadPlayer()
     {
         XmlDocument Xmldoc = new XmlDocument();
-        string filepath = sc.dataPath + "Pseudo.xml";
+        string filepath = sc.dataPath + "Player.xml";
 
         if (File.Exists(filepath))
         {
@@ -36,10 +43,14 @@ public class HandleText : MonoBehaviour {
                 {
                     if (Item.Name == "name")
                     {
-                        pseudoboard[i2] = Item.InnerText;
-                        i2++;
+                        pseudoboard[i] = Item.InnerText;
+                    }
+                    else if (Item.Name == "score")
+                    {
+                        scorepoints[i] = GetInt(Item.InnerText);
                     }
                 }
+                i++;
             }
         }
     }
@@ -49,31 +60,5 @@ public class HandleText : MonoBehaviour {
         int result = 0;
         int.TryParse(stringValue, out result);
         return result;
-    }
-
-    static public void LoadScore()
-    {
-        XmlDocument Xmldoc = new XmlDocument();
-        string filepath = sc.dataPath + "Score.xml";
-
-        if (File.Exists(filepath))
-        {
-            Xmldoc.Load(filepath);
-
-            XmlNodeList listscore = Xmldoc.GetElementsByTagName("player");
-
-            foreach (XmlNode info in listscore)
-            {
-                XmlNodeList content = info.ChildNodes;
-                foreach (XmlNode Item in content)
-                {
-                    if (Item.Name == "score")
-                    {
-                        scorepoints[i] = GetInt(Item.InnerText);
-                        i++;
-                    }
-                }
-            }
-        }
     }
 }

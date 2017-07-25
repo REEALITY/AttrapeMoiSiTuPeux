@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour {
 
     private enum States
     {
-        timerOn, timerOff, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9
+        timerOn, timerOff, HighScore
     };
     private States myState;
 
@@ -43,16 +43,7 @@ public class Timer : MonoBehaviour {
     {
         if (myState == States.timerOn) { StartGame(); }
         else if (myState == States.timerOff) { EndGame(); }
-        else if (myState == States.s0) { HighScore0(); }
-        else if (myState == States.s1) { HighScore1(); }
-        else if (myState == States.s2) { HighScore2(); }
-        else if (myState == States.s3) { HighScore3(); }
-        else if (myState == States.s4) { HighScore4(); }
-        else if (myState == States.s5) { HighScore5(); }
-        else if (myState == States.s6) { HighScore6(); }
-        else if (myState == States.s7) { HighScore7(); }
-        else if (myState == States.s8) { HighScore8(); }
-        else if (myState == States.s9) { HighScore9(); }
+        else if (myState == States.HighScore) { MyHighScore(); }
         Debug.Log(myState);
     }
 
@@ -66,33 +57,49 @@ public class Timer : MonoBehaviour {
         if ((int)tgame == 0)
         {
             MyNewPoints = CatchBalls.point;
-            SaveScore(MyNewPoints);
+            SavePlayer(Pseudonyme, MyNewPoints);
+        }
+    }
+
+    private void MySwap()
+    {
+        int i = 0;
+        int temp = 0;
+        int stop = 1;
+        string TS = "";
+
+        while (stop != 0)
+        {
+            stop = 0;
+            i = 0;
+            while (i != 49)
+            {
+                if (HandleText.scorepoints[i] < HandleText.scorepoints[i + 1])
+                {
+                    temp = HandleText.scorepoints[i];
+                    TS = HandleText.pseudoboard[i];
+                    HandleText.scorepoints[i] = HandleText.scorepoints[i + 1];
+                    HandleText.pseudoboard[i] = HandleText.pseudoboard[i + 1];
+                    HandleText.scorepoints[i + 1] = temp;
+                    HandleText.pseudoboard[i + 1] = TS;
+
+                    stop = 1;
+                }
+                i++;
+            }
         }
     }
 
     public void EndGame()
     {
-        //mySortScore = HandleText.scorepoints;
-        //Debug.Log(mySortScore[0]);
-
         Audio[0].clip = VoiceSource[0];
         Audio[1].clip = VoiceSource[1];
         Audio[2].clip = VoiceSource[2];
         CanvasHighScore.SetActive(true);
         CanvasTimer.SetActive(false);
-        HandleText.LoadScore();
-        HandleText.LoadPseudo();
-        System.Array.Sort(HandleText.scorepoints);
-        Debug.Log(HandleText.scorepoints[0]);
-        Debug.Log(HandleText.scorepoints[1]);
-        Debug.Log(HandleText.scorepoints[2]);
-        Debug.Log(HandleText.scorepoints[3]);
-        Debug.Log(HandleText.scorepoints[4]);
-        Debug.Log(HandleText.scorepoints[5]);
-        Debug.Log(HandleText.scorepoints[6]);
-        Debug.Log(HandleText.scorepoints[7]);
-        Debug.Log(HandleText.scorepoints[8]);
-        Debug.Log(HandleText.scorepoints[9]);
+        HandleText.LoadPlayer();
+        MySwap();
+        //System.Array.Sort(HandleText.scorepoints);
         if (MyNewPoints >= 250) {
             Audio[0].volume = 1;
             Audio[0].Play();
@@ -108,268 +115,70 @@ public class Timer : MonoBehaviour {
             Audio[2].Play();
            // Audio[2].Stop();
         }
-        MyHighScore();
+        myState = States.HighScore;
+        //MyHighScore();
     }
 
     private void MyHighScore()
     {
-        if (MyNewPoints >= HandleText.scorepoints[0]) { myState = States.s0; }
-        else if (MyNewPoints >= HandleText.scorepoints[1]) { myState = States.s1; }
-        else if (MyNewPoints >= HandleText.scorepoints[2]) { myState = States.s2; }
-        else if (MyNewPoints >= HandleText.scorepoints[3]) { myState = States.s3; }
-        else if (MyNewPoints >= HandleText.scorepoints[4]) { myState = States.s4; }
-        else if (MyNewPoints >= HandleText.scorepoints[5]) { myState = States.s5; }
-        else if (MyNewPoints >= HandleText.scorepoints[6]) { myState = States.s6; }
-        else if (MyNewPoints >= HandleText.scorepoints[7]) { myState = States.s7; }
-        else if (MyNewPoints >= HandleText.scorepoints[8]) { myState = States.s8; }
-        else if (MyNewPoints >= HandleText.scorepoints[9]) { myState = States.s9; }
-                 
+        Pseudo[0].text = HandleText.pseudoboard[0];
+        Pseudo[1].text = HandleText.pseudoboard[1];
+        Pseudo[2].text = HandleText.pseudoboard[2];
+        Pseudo[3].text = HandleText.pseudoboard[3];
+        Pseudo[4].text = HandleText.pseudoboard[4];
+        Pseudo[5].text = HandleText.pseudoboard[5];
+        Pseudo[6].text = HandleText.pseudoboard[6];
+        Pseudo[7].text = HandleText.pseudoboard[7];
+        Pseudo[8].text = HandleText.pseudoboard[8];
+        Pseudo[9].text = HandleText.pseudoboard[9];
+   
+        Points[0].text = "" + HandleText.scorepoints[0];
+        Points[1].text = "" + HandleText.scorepoints[1];
+        Points[2].text = "" + HandleText.scorepoints[2];
+        Points[3].text = "" + HandleText.scorepoints[3];
+        Points[4].text = "" + HandleText.scorepoints[4];
+        Points[5].text = "" + HandleText.scorepoints[5];
+        Points[6].text = "" + HandleText.scorepoints[6];
+        Points[7].text = "" + HandleText.scorepoints[7];
+        Points[8].text = "" + HandleText.scorepoints[8];
+        Points[9].text = "" + HandleText.scorepoints[9];
+
+        for (int i = 0; i <= 49; i++)
+        { 
+            if (HandleText.scorepoints[i] >= 200)
+            {
+                Grade[i].text = "Capitaine";
+            }
+            else if (HandleText.scorepoints[i] > 150)
+            {
+                Grade[i].text = "Corsaire";
+            }
+            else if (HandleText.scorepoints[i] > 100)
+            {
+                Grade[i].text = "Marin";
+            }
+            else if (HandleText.scorepoints[i] > 75)
+            {
+                Grade[i].text = "Navigateur";
+            }
+            else if (HandleText.scorepoints[i] > 50)
+            {
+                Grade[i].text = "Second maître";
+            }
+            else if (HandleText.scorepoints[i] > 25)
+            {
+                Grade[i].text = "Cannonier";
+            }
+            else if (HandleText.scorepoints[i] > 0)
+            {
+                Grade[i].text = "Moussaillon";
+            }
+        }
     }
 
-    private void HighScore0()
+    public void SavePlayer(string PlayerPseudo, int MyScore)
     {
-        HandleText.scorepoints[0] = MyNewPoints;
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
-    }
-    private void HighScore1()
-    {
-        HandleText.scorepoints[1] = MyNewPoints;
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
-    }
-    private void HighScore2()
-    {
-        HandleText.scorepoints[2] = MyNewPoints;
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
-    }
-    private void HighScore3()
-    {
-        HandleText.scorepoints[3] = MyNewPoints;
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
-    }
-    private void HighScore4()
-    {
-        HandleText.scorepoints[4] = MyNewPoints;
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
-    }
-    private void HighScore5()
-    {
-        HandleText.scorepoints[5] = MyNewPoints;
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
-    }
-    private void HighScore6()
-    {
-        HandleText.scorepoints[6] = MyNewPoints;
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
-    }
-    private void HighScore7()
-    {
-        HandleText.scorepoints[7] = MyNewPoints;
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
-    }
-    private void HighScore8()
-    {
-        HandleText.scorepoints[8] = MyNewPoints;
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
-    }
-    private void HighScore9()
-    {
-        HandleText.scorepoints[9] = MyNewPoints;
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
-    }
-
-    public void SaveScore(int MyScore)
-    {
-        string filepath = sc.dataPath + "Score.xml";
+        string filepath = sc.dataPath + "Player.xml";
 
         XmlDocument Xmldoc = new XmlDocument();
 
@@ -381,6 +190,10 @@ public class Timer : MonoBehaviour {
             //elmroot.RemoveAll();
 
             XmlElement elmnew = Xmldoc.CreateElement("player");
+
+            XmlElement name = Xmldoc.CreateElement("name");
+            name.InnerText = PlayerPseudo; 
+            elmnew.AppendChild(name);
 
             XmlElement score = Xmldoc.CreateElement("score");
             score.InnerText = MyScore.ToString();
