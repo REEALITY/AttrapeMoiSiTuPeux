@@ -120,27 +120,11 @@ public class Timer : MonoBehaviour {
 
     private void MyHighScore()
     {
-        Pseudo[0].text = HandleText.pseudoboard[0];
-        Pseudo[1].text = HandleText.pseudoboard[1];
-        Pseudo[2].text = HandleText.pseudoboard[2];
-        Pseudo[3].text = HandleText.pseudoboard[3];
-        Pseudo[4].text = HandleText.pseudoboard[4];
-        Pseudo[5].text = HandleText.pseudoboard[5];
-        Pseudo[6].text = HandleText.pseudoboard[6];
-        Pseudo[7].text = HandleText.pseudoboard[7];
-        Pseudo[8].text = HandleText.pseudoboard[8];
-        Pseudo[9].text = HandleText.pseudoboard[9];
-   
-        Points[0].text = "" + HandleText.scorepoints[0];
-        Points[1].text = "" + HandleText.scorepoints[1];
-        Points[2].text = "" + HandleText.scorepoints[2];
-        Points[3].text = "" + HandleText.scorepoints[3];
-        Points[4].text = "" + HandleText.scorepoints[4];
-        Points[5].text = "" + HandleText.scorepoints[5];
-        Points[6].text = "" + HandleText.scorepoints[6];
-        Points[7].text = "" + HandleText.scorepoints[7];
-        Points[8].text = "" + HandleText.scorepoints[8];
-        Points[9].text = "" + HandleText.scorepoints[9];
+        for (int i = 0; i <= 9; i++)
+        {
+            Pseudo[i].text = HandleText.pseudoboard[i];
+            Points[i].text = "" + HandleText.scorepoints[i];
+        }
 
         for (int i = 0; i <= 49; i++)
         { 

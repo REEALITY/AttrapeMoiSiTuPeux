@@ -7,6 +7,7 @@ using System.Xml;
 
 public class HandleText : MonoBehaviour {
 
+    //Sorry :'(
     static public int[] scorepoints = new int[500] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -107,6 +108,7 @@ public class HandleText : MonoBehaviour {
                                                            "", "", "", "", "", "", "", "", "", "",
                                                            "", "", "", "", "", "", "", "", "", "",
                                                            "", "", "", "", "", "", "", "", "", "" };
+
     static public saveconfig sc;
     static public int i = 0;
 
