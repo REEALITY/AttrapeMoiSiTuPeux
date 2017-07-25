@@ -7,12 +7,21 @@ using System.Xml;
 
 public class HandleText : MonoBehaviour {
 
-    private Menu menu;
+    static public int[] scorepoints = new int[11] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    static public string[] pseudoboard = new string[10] { "", "", "", "", "", "", "", "", "", "" };
+    static public saveconfig sc;
+    static private int i = 0;
+    static private int i2 = 0;
 
-    void Load()
+    public void Start()
+    {
+        sc = GetComponent<saveconfig>();
+    }
+
+    static public void LoadPseudo()
     {
         XmlDocument Xmldoc = new XmlDocument();
-        string filepath = menu.sc.dataPath + "highscore.xml";
+        string filepath = sc.dataPath + "Pseudo.xml";
 
         if (File.Exists(filepath))
         {
@@ -27,15 +36,41 @@ public class HandleText : MonoBehaviour {
                 {
                     if (Item.Name == "name")
                     {
-                        Debug.Log("player : " + Item.InnerText);
+                        pseudoboard[i2] = Item.InnerText;
+                        i2++;
                     }
-                    if (Item.Name == "timerace")
+                }
+            }
+        }
+    }
+
+    static public int GetInt(string stringValue)
+    {
+        int result = 0;
+        int.TryParse(stringValue, out result);
+        return result;
+    }
+
+    static public void LoadScore()
+    {
+        XmlDocument Xmldoc = new XmlDocument();
+        string filepath = sc.dataPath + "Score.xml";
+
+        if (File.Exists(filepath))
+        {
+            Xmldoc.Load(filepath);
+
+            XmlNodeList listscore = Xmldoc.GetElementsByTagName("player");
+
+            foreach (XmlNode info in listscore)
+            {
+                XmlNodeList content = info.ChildNodes;
+                foreach (XmlNode Item in content)
+                {
+                    if (Item.Name == "score")
                     {
-                        Debug.Log("time : " + Item.InnerText);
-                    }
-                    if (Item.Name == "timerun")
-                    {
-                        Debug.Log("timerun : " + Item.InnerText);
+                        scorepoints[i] = GetInt(Item.InnerText);
+                        i++;
                     }
                 }
             }

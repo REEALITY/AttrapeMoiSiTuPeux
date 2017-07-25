@@ -25,7 +25,7 @@ public class Menu : MonoBehaviour {
         {
             Save(Pseudo);
             WritePseudo.gameObject.SetActive(false);
-            //SceneManager.LoadScene(1);
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -37,7 +37,6 @@ public class Menu : MonoBehaviour {
 
     public void Save(string PlayerName)
     {
-        Debug.Log(PlayerName);
         string filepath = sc.dataPath + "Pseudo.xml";
 
         XmlDocument Xmldoc = new XmlDocument();
@@ -55,11 +54,8 @@ public class Menu : MonoBehaviour {
             name.InnerText = PlayerName;
 
             elmnew.AppendChild(name);
-
             elmroot.AppendChild(elmnew);
-
             Xmldoc.Save(filepath);
-
         }
     }
 }

@@ -1,33 +1,33 @@
 <!--?xml version="1.0" encoding="utf-8" ?-->
 <BombPirates>
   <player>
-    <name>Theo</name>
+    <score>100</score>
   </player>
   <player>
-    <name>Vasrek</name>
+    <score>75</score>
   </player>
   <player>
-    <name>Julien</name>
+    <score>50</score>
   </player>
   <player>
-    <name>Nicolas</name>
+    <score>65</score>
   </player>
   <player>
-    <name>Antoine</name>
+    <score>70</score>
   </player>
   <player>
-    <name>Lucas</name>
+    <score>25</score>
   </player>
   <player>
-    <name>Marie</name>
+    <score>15</score>
   </player>
   <player>
-    <name>Fleur</name>
+    <score>0</score>
   </player>
   <player>
-    <name>Gerard</name>
+    <score>40</score>
   </player>
   <player>
-    <name>Benoit</name>
+    <score>90</score>
   </player>
 </BombPirates>
