@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Xml;
-using System.IO;
 using UnityEngine.SceneManagement;
-using System;
 
 public class Menu : MonoBehaviour {
 
@@ -27,8 +24,7 @@ public class Menu : MonoBehaviour {
             SceneManager.LoadScene(1);
         }
     }
-
-    // Use this for initialization
+    
     void Start()
     {
         sc = GetComponent<saveconfig>();

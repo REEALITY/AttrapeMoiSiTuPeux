@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System.IO;
 using System.Xml;
 
@@ -119,12 +118,13 @@ public class HandleText : MonoBehaviour {
 
     static public void LoadPlayer()
     {
+        string levelFilePath = Application.persistentDataPath + "/Player.xml";
         XmlDocument Xmldoc = new XmlDocument();
-        string filepath = sc.dataPath + "Player.xml";
 
-        if (File.Exists(filepath))
+        if (File.Exists(levelFilePath))
         {
-            Xmldoc.Load(filepath);
+            i = 0;
+            Xmldoc.Load(levelFilePath);
 
             XmlNodeList listscore = Xmldoc.GetElementsByTagName("player");
 

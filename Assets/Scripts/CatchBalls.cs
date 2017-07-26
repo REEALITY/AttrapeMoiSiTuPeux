@@ -16,6 +16,7 @@ public class CatchBalls : MonoBehaviour {
     
     private void Start()
     {
+        point = 0;
         score.text = "" + point;
         sound = GetComponent<AudioSource>();
     }

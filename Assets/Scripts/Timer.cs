@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Xml;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
 
@@ -15,7 +16,6 @@ public class Timer : MonoBehaviour {
     public Text[] Grade;
     public Text[] Points;
     public AudioSource[] Audio;
-    public AudioClip[] VoiceSource;
     public saveconfig sc;
 
     private Menu Menu;
@@ -44,19 +44,24 @@ public class Timer : MonoBehaviour {
         if (myState == States.timerOn) { StartGame(); }
         else if (myState == States.timerOff) { EndGame(); }
         else if (myState == States.HighScore) { MyHighScore(); }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     void StartGame()
     {
         string data = "";
-
+        
         myState = States.timerOn;
         timer.text = data + (int)tgame;
         tgame -= Time.deltaTime;
         if ((int)tgame == 0)
         {
             MyNewPoints = CatchBalls.point;
-            SavePlayer(Pseudonyme, MyNewPoints, sc.dataPath);
+            SavePlayer(Pseudonyme, MyNewPoints);
         }
     }
 
@@ -71,7 +76,7 @@ public class Timer : MonoBehaviour {
         {
             stop = 0;
             i = 0;
-            while (i != 49)
+            while (i != 499)
             {
                 if (HandleText.scorepoints[i] < HandleText.scorepoints[i + 1])
                 {
@@ -91,31 +96,21 @@ public class Timer : MonoBehaviour {
 
     public void EndGame()
     {
-        Audio[0].clip = VoiceSource[0];
-        Audio[1].clip = VoiceSource[1];
-        Audio[2].clip = VoiceSource[2];
         CanvasHighScore.SetActive(true);
         CanvasTimer.SetActive(false);
         HandleText.LoadPlayer();
         MySwap();
-        //System.Array.Sort(HandleText.scorepoints);
-        if (MyNewPoints >= 250) {
-            Audio[0].volume = 1;
-            Audio[0].Play();
-            //Audio[0].Stop();
+        if (MyNewPoints >= 150) {
+            Audio[0].gameObject.SetActive(true);
         }
-        else if (MyNewPoints <= 0) {
-            Audio[1].volume = 1;
-            Audio[1].Play();
-            //Audio[1].Stop();
+        else if (MyNewPoints > 0 &&
+                 MyNewPoints < 150) { 
+            Audio[1].gameObject.SetActive(true);
         }
-        else {
-            Audio[2].volume = 1;
-            Audio[2].Play();
-           // Audio[2].Stop();
+        else if (MyNewPoints < 0) {
+            Audio[2].gameObject.SetActive(true);
         }
         myState = States.HighScore;
-        //MyHighScore();
     }
 
     private void MyHighScore()
@@ -126,9 +121,9 @@ public class Timer : MonoBehaviour {
             Points[i].text = "" + HandleText.scorepoints[i];
         }
 
-        for (int i = 0; i <= 49; i++)
+        for (int i = 0; i <= 499; i++)
         { 
-            if (HandleText.scorepoints[i] >= 200)
+            if (HandleText.scorepoints[i] >= 180)
             {
                 Grade[i].text = "Capitaine";
             }
@@ -148,30 +143,26 @@ public class Timer : MonoBehaviour {
             {
                 Grade[i].text = "Second maître";
             }
-            else if (HandleText.scorepoints[i] > 40)
+            else if (HandleText.scorepoints[i] > 30)
             {
                 Grade[i].text = "Cannonier";
             }
-            else if (HandleText.scorepoints[i] > 0)
-            {
+            else
                 Grade[i].text = "Moussaillon";
-            }
         }
     }
 
-    public void SavePlayer(string PlayerPseudo, int MyScore, string filepath)
+    public void SavePlayer(string PlayerPseudo, int MyScore)
     {
-        filepath = filepath + "Player.xml";
-        Debug.Log(filepath);
+        string levelFilePath = Application.persistentDataPath + "/Player.xml";
+        Debug.Log(levelFilePath);
         XmlDocument Xmldoc = new XmlDocument();
 
-        if (File.Exists(filepath))
+        if (File.Exists(levelFilePath))
         {
-            //TextAsset textAsset = (TextAsset)Resources.Load(filepath, typeof(TextAsset));
-            Xmldoc.Load(filepath);
+            Xmldoc.Load(levelFilePath);
 
             XmlElement elmroot = Xmldoc.DocumentElement;
-            //elmroot.RemoveAll();
 
             XmlElement elmnew = Xmldoc.CreateElement("player");
 
@@ -185,7 +176,7 @@ public class Timer : MonoBehaviour {
 
             elmroot.AppendChild(elmnew);
 
-            Xmldoc.Save(filepath);
+            Xmldoc.Save(levelFilePath);
 
             myState = States.timerOff;
 
